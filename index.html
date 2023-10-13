@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="AnimeCaptcha Demo" />
+		<meta name="keywords" content="FireStreaker2, AnimeCaptcha" />
+		<meta name="copyright" content="FireStreaker2" />
+		<meta property="og:title" content="AnimeCaptcha Demo" />
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="AnimeCaptcha Demo" />
+		<meta name="theme-color" content="#000000" />
+		<title>AnimeCaptcha Demo</title>
+	</head>
+
+	<body>
+		<form id="form">
+			<input placeholder="name" id="input" />
+			<button>Submit</button>
+		</form>
+
+		<div id="anime-captcha"></div>
+
+		<a href="https://github.com/FireStreaker2/AnimeCaptcha" target="_blank"
+			>Source Code</a
+		>
+
+		<style>
+			body {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 100vh;
+				overflow: hidden;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			a {
+				margin-top: 1rem;
+				color: #000;
+			}
+		</style>
+
+		<script src="https://cdn.jsdelivr.net/gh/FireStreaker2/AnimeCaptcha@latest/animecaptcha.min.js"></script>
+		<script>
+			const captcha = new AnimeCaptcha();
+			captcha.attach(document.getElementById("anime-captcha"));
+
+			const form = document.getElementById("form");
+			form.addEventListener("submit", (event) => {
+				event.preventDefault();
+
+				captcha.isFinished()
+					? alert(input.value.trim())
+					: alert("Please finish the captcha");
+			});
+		</script>
+	</body>
+</html>
